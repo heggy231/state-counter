@@ -3,25 +3,46 @@ import React, { Component } from "react";
 class App extends Component {
 
   constructor() {
-    super(); // call parent constructor, Component, https://youtu.be/s7UzFzD4zZI?t=275
-    // counter prop is available to every Obj, every instance of App class
-    console.log('[Constructor] this:', this);
-    this.counter = 99;
+    super();
 
-    // this.handleIncrementClick = this.handleIncrementClick.bind(this);
+    this.state = {
+      counter: 77
+    };
   }
 
   handleIncrementClick = () => {
-    console.log('this', this);
-    this.counter++;
-    console.log('this.counter', this.counter); // this.counter is zero as initial value is defined inside of constructor
+    // this.setState will replace this.state obj
+    this.setState({
+      counter: this.state.counter + 1
+    })
+  }
+
+  handleDecrementClick = () => {
+    this.setState({
+      counter: this.state.counter - 1
+    })
+  }
+
+  handleDoublingClick = () => {
+    this.setState({
+      counter: this.state.counter * 2
+    })
+  }
+
+  handleHalfClick = () => {
+    this.setState({
+      counter: this.state.counter / 2
+    })
   }
 
   render() {
     return (
       <div>
-        <h1>{this.counter}</h1>
+        <h1>{this.state.counter}</h1>
         <button onClick={this.handleIncrementClick}>Increment</button>
+        <button onClick={this.handleDecrementClick}>Decrement</button>
+        <button onClick={this.handleDoublingClick}>Double 2X</button>
+        <button onClick={this.handleHalfClick}>Half 1/2</button>
       </div>
     );
   }

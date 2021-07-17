@@ -93,3 +93,11 @@ handleIncrementClick = () => {
 }
 
 ```
+
+- UI bug:  UI only get updated first time component is mounted.
+    * `render() {}` is called only once. 
+
+- Fix UI bug: `this.state` to update whenever there is update in state.
+  * Do not mutate state directly. Use setState()  react/no-direct-mutation-state
+  * You never *change* state but you *replace* the state.
+
