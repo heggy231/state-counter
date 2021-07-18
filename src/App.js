@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import DisplayCounter from "./components/DisplayCounter";
 
 class App extends Component {
 
@@ -38,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>{this.state.counter}</h1>
+        <DisplayCounter counter={this.state.counter}/>
         <button onClick={this.handleIncrementClick}>Increment</button>
         <button onClick={this.handleDecrementClick}>Decrement</button>
         <button onClick={this.handleDoublingClick}>Double 2X</button>
