@@ -39,7 +39,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <DisplayCounter counter={this.state.counter}/>
+        <DisplayCounter counter={this.state.counter} />
         <button onClick={this.handleIncrementClick}>Increment</button>
         <button onClick={this.handleDecrementClick}>Decrement</button>
         <button onClick={this.handleDoublingClick}>Double 2X</button>
