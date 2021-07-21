@@ -1,35 +1,19 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
+const LifecycleDemo = (props) => {
+  console.log('render()');
 
-class LifecycleDemo extends Component {
+  const [count, setCount] = useState(0);
 
-  constructor(props) {
-    super(props);
-    console.log('constructor()');
+  const _increment = () => setCount(count + 1);
 
-    this.state = {
-      count: 77
-    };
-  }
-
-  render() {
-    console.log('render()');
     return (
       <>
-        <h1>Lifecycle Demo {this.state.count}</h1>
-        <button onClick={this._increment}>+</button>
+        <h1>Lifecycle Demo {count}</h1>
+        <button onClick={_increment}>+</button>
       </>
     );
-  }
 
-  _increment = () => {
-    console.log('_increment()');
-    this.setState({
-      count: this.state.count + 1
-      }, () => {
-        console.log('this.setState() finished');
-    });
-  }
 }
 
 export default LifecycleDemo;
