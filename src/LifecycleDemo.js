@@ -30,10 +30,14 @@ const LifecycleDemo = (props) => {
   }, []);
 
   // async
-  useEffect(async () => {
-    const someAPI = "https://api.chucknorris.io/jokes/search?query=Tesla";
-    const val = await fetch(someAPI).then(res => res.json()).then(data => data.result[0].value);
-    console.log(`API returned: ${val}`);
+  useEffect(() => {
+    const someAPIUrl = "https://api.chucknorris.io/jokes/search?query=Tesla";
+    const asyncFn = async () => {
+      const val = await fetch(someAPIUrl).then(res => res.json()).then(data => data.result[0].value);
+      
+      console.log(`API returned: ${val}`);
+    }
+    asyncFn();
   });
 
   return (

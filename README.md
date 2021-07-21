@@ -141,10 +141,24 @@ export default LifecycleDemo;
 https://api.chucknorris.io/jokes/search?query=Tesla
 
 ```js
-  // async
+
+  // warning! async doesn't work here.  Effect cb are synchronous to prevent race conditions.
   useEffect(async () => {
     const someAPI = "https://api.chucknorris.io/jokes/search?query=Tesla";
     const val = await fetch(someAPI).then(res => res.json()).then(data => data.result[0].value);
     console.log(`API returned: ${val}`);
   });
+
+  // fix - define async inside of useEffect() then call it inside of useEffect()
+  useEffect(() => {
+    const someAPIUrl = "https://api.chucknorris.io/jokes/search?query=Tesla";
+    const asyncFn = async () => {
+      const val = await fetch(someAPIUrl).then(res => res.json()).then(data => data.result[0].value);
+      
+      console.log(`API returned: ${val}`);
+    }
+    asyncFn();
+  });
 ```
+
+Thi
