@@ -124,3 +124,27 @@ const LifecycleDemo = (props) => {
 
 export default LifecycleDemo;
 ```
+
+- react knows that if you return a function from the callback, it should call the function to do "clean up".  Passing the empty Array ensures that the clean up function will only run once (when the Component is unmounting/removed)
+
+```js
+  // componentWillUnmount()
+  useEffect(() => {
+    return () => {
+      console.log("Runs when component is unmounted/removed");
+    }
+  }, []);
+```
+
+## useEffect for API call 
+- my demo api:
+https://api.chucknorris.io/jokes/search?query=Tesla
+
+```js
+  // async
+  useEffect(async () => {
+    const someAPI = "https://api.chucknorris.io/jokes/search?query=Tesla";
+    const val = await fetch(someAPI).then(res => res.json()).then(data => data.result[0].value);
+    console.log(`API returned: ${val}`);
+  });
+```
